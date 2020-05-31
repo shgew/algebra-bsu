@@ -8,33 +8,29 @@
 import Foundation
 
 /// - Reference: https://en.wikipedia.org/wiki/Gauss–Seidel_method
-public func gaussSeidel(
-    x: Double, y: Double,
-    precision: Double
-) {
-    gaussSeidelHelper(
-        x: x, y: y,
-        precision: precision,
-        iterationCount: 1
-    )
-}
-
-fileprivate func gaussSeidelHelper(x: Double, y: Double, precision: Double, iterationCount: UInt64) {
-    let nextX = x
-        + C11 * (sin(y + 2) - y * x - 0.5)
-        + C12 * (x * x + y * y - 1)
-    let nextY = y
-        + C21 * (sin(y + 2) - y * x - 0.5)
-        + C22 * (nextX * nextX + y * y - 1)
+@discardableResult
+public func gaussSeidel(x: Double, y: Double, precision: Double) -> (x: Double, y: Double) {
+    var newX = x
+    var newY = y
     
-    printIterationData(x: nextX, y: nextY, iterationCount: iterationCount)
-    if abs(y - nextY) < precision && abs(x - nextX) < precision {
-        return
-    } else {
-        gaussSeidelHelper(
-            x: nextX, y: nextY,
-            precision: precision,
-            iterationCount: iterationCount + 1
-        )
-    }
+    var lastX: Double
+    var lastY: Double
+    
+    var iterationCount: UInt64 = 1
+    repeat {
+        lastX = newX
+        lastY = newY
+        
+        newX = newX
+            + C11 * (sin(lastY + 2) - lastY * lastX - 0.5)
+            + C12 * (lastX * lastX + lastY * lastY - 1)
+        newY = newY
+            + C21 * (sin(lastY + 2) - lastY * lastX - 0.5)
+            + C22 * (newX * newX + lastY * lastY - 1)
+        
+        printIterationData(x: newX, y: newY, iterationCount: iterationCount)
+        iterationCount += 1
+    } while abs(newY - lastY) >= precision || abs(newX - lastX) >= precision
+    
+    return (newX, newY)
 }
