@@ -9,12 +9,9 @@ import Foundation
 
 /// - Reference: https://en.wikipedia.org/wiki/Fixed-point_iteration
 @discardableResult
-public func fixedPointIteration(
-    x: Double, y: Double,
-    precision: Double
-) -> (x: Double, y: Double) {
-    var newX = x
-    var newY = y
+public func fixedPointIteration(startX: Double, startY: Double, precision: Double) -> (x: Double, y: Double) {
+    var newX = startX
+    var newY = startY
     
     var lastX: Double
     var lastY: Double

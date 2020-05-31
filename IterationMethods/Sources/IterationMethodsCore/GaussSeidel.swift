@@ -9,9 +9,9 @@ import Foundation
 
 /// - Reference: https://en.wikipedia.org/wiki/Gauss–Seidel_method
 @discardableResult
-public func gaussSeidel(x: Double, y: Double, precision: Double) -> (x: Double, y: Double) {
-    var newX = x
-    var newY = y
+public func gaussSeidel(startX: Double, startY: Double, precision: Double) -> (x: Double, y: Double) {
+    var newX = startX
+    var newY = startY
     
     var lastX: Double
     var lastY: Double

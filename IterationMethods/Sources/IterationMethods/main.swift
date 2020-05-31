@@ -9,12 +9,12 @@ import IterationMethodsCore
 
 let separator = "================================"
 
-let x = 0.96
-let y = 0.27
+let startX = 0.96
+let startY = 0.27
 let precision = 10e-5
 
-fixedPointIteration(x: x, y: y, precision: precision)
+fixedPointIteration(startX: startX, startY: startY, precision: precision)
 print(separator)
-gaussSeidel(x: x, y: y, precision: precision)
+gaussSeidel(startX: startX, startY: startY, precision: precision)
 print(separator)
-newton(x: x, y: y, precision: precision)
+newton(startX: startX, startY: startY, precision: precision)

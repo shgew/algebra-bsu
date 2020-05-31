@@ -8,12 +8,9 @@
 import Foundation
 
 /// - Reference: https://en.wikipedia.org/wiki/Newton%27s_method
-public func newton(
-    x: Double, y: Double,
-    precision: Double
-) {
+public func newton(startX: Double, startY: Double, precision: Double) {
     newtonHelper(
-        x: x, y: y,
+        x: startX, y: startY,
         precision: precision,
         iterationCount: 1
     )
