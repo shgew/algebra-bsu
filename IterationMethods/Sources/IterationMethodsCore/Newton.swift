@@ -8,27 +8,27 @@
 import Foundation
 
 /// - Reference: https://en.wikipedia.org/wiki/Newton%27s_method
-public func newton(startX: Double, startY: Double, precision: Double) {
-    newtonHelper(
-        x: startX, y: startY,
-        precision: precision,
-        iterationCount: 1
-    )
-}
-
-fileprivate func newtonHelper(x: Double, y: Double, precision: Double, iterationCount: UInt64) {
-    let multiplier = 1 / (-2 * x * x + 2 * x * cos(y + 2) + 2 * y * y)
-    let nextX = x - multiplier * ((x * x + y * y - 1) * (cos(y + 2) - x) - 2 * y * (sin(y + 2) - y * x - 0.5))
-    let nextY = y - multiplier * (y * (x * x + y * y - 1) + 2 * x * (sin(y + 2) - y * x - 0.5))
+@discardableResult
+public func newton(startX: Double, startY: Double, precision: Double) -> (x: Double, y: Double) {
+    var newX = startX
+    var newY = startY
     
-    printIterationData(x: nextX, y: nextY, iterationCount: iterationCount)
-    if (abs(y - nextY) < precision && abs(x - nextX) < precision) {
-        return
-    } else {
-        newtonHelper(
-            x: nextX, y: nextY,
-            precision: precision,
-            iterationCount: iterationCount + 1
-        )
-    }
+    var lastX: Double
+    var lastY: Double
+    
+    var iterationCount: UInt64 = 1
+    repeat {
+        lastX = newX
+        lastY = newY
+        
+        let multiplier = 1 / (-2 * lastX * lastX + 2 * lastX * cos(lastY + 2) + 2 * lastY * lastY)
+        
+        newX = lastX - multiplier * ((lastX * lastX + lastY * lastY - 1) * (cos(lastY + 2) - lastX) - 2 * lastY * (sin(lastY + 2) - lastY * lastX - 0.5))
+        newY = lastY - multiplier * (lastY * (lastX * lastX + lastY * lastY - 1) + 2 * lastX * (sin(lastY + 2) - lastY * lastX - 0.5))
+        
+        printIterationData(x: newX, y: newY, iterationCount: iterationCount)
+        iterationCount += 1
+    } while abs(newY - lastY) >= precision || abs(newX - lastX) >= precision
+    
+    return (newX, newY)
 }
