@@ -1,3 +1,3 @@
-# SquareRootMethod
+# IterationMethods
 
 A description of this package.
