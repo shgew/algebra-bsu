@@ -10,9 +10,6 @@ let C12 = -0.546
 let C21 = 0.654
 let C22 = 0.092
 
-func printIterationData(
-    x: Double, y: Double,
-    iterationCount: UInt64
-) {
+func printIterationData(x: Double, y: Double, iterationCount: UInt64) {
     print("x – \(x), y – \(y): \(iterationCount)")
 }
