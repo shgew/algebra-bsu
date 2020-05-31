@@ -31,7 +31,7 @@ fileprivate func fixedPointIterationHelper(
         + C21 * (sin(y + 2) - y * x - 0.5)
         + C22 * (x * x + y * y - 1)
     
-    printIterationData(x: x, y: y, iterationCount: iterationCount)
+    printIterationData(x: nextX, y: nextY, iterationCount: iterationCount)
     if abs(y - nextY) < precision && abs(x - nextX) < precision {
         return
     } else {

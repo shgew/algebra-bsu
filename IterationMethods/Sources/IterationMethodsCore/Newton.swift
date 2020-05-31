@@ -24,7 +24,7 @@ fileprivate func newtonHelper(x: Double, y: Double, precision: Double, iteration
     let nextX = x - multiplier * ((x * x + y * y - 1) * (cos(y + 2) - x) - 2 * y * (sin(y + 2) - y * x - 0.5))
     let nextY = y - multiplier * (y * (x * x + y * y - 1) + 2 * x * (sin(y + 2) - y * x - 0.5))
     
-    printIterationData(x: x, y: y, iterationCount: iterationCount)
+    printIterationData(x: nextX, y: nextY, iterationCount: iterationCount)
     if (abs(y - nextY) < precision && abs(x - nextX) < precision) {
         return
     } else {
