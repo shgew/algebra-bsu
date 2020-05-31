@@ -8,7 +8,7 @@
 import Foundation
 
 /// - Reference: https://en.wikipedia.org/wiki/Newton%27s_method
-func newton(
+public func newton(
     x: Double, y: Double,
     precision: Double
 ) {

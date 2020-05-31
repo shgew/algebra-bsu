@@ -8,7 +8,7 @@
 import Foundation
 
 /// - Reference: https://en.wikipedia.org/wiki/Fixed-point_iteration
-func fixedPointIteration(
+public func fixedPointIteration(
     x: Double, y: Double,
     precision: Double
 ) {

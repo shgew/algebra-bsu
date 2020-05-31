@@ -8,7 +8,7 @@
 import Foundation
 
 /// - Reference: https://en.wikipedia.org/wiki/Gauss–Seidel_method
-func gaussSeidel(
+public func gaussSeidel(
     x: Double, y: Double,
     precision: Double
 ) {
