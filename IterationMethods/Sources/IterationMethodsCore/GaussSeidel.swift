@@ -19,7 +19,7 @@ public func gaussSeidel(
     )
 }
 
-fileprivate func gaussSeidelHelper(x: Double, y: Double, precision: Double, iterationCount: Int) {
+fileprivate func gaussSeidelHelper(x: Double, y: Double, precision: Double, iterationCount: UInt64) {
     let nextX = x
         + C11 * (sin(y + 2) - y * x - 0.5)
         + C12 * (x * x + y * y - 1)

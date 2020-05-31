@@ -12,7 +12,7 @@ let C22 = 0.092
 
 func printIterationData(
     x: Double, y: Double,
-    iterationCount: Int
+    iterationCount: UInt64
 ) {
     print("x – \(x), y – \(y): \(iterationCount)")
 }

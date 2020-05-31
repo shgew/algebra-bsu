@@ -19,7 +19,7 @@ public func newton(
     )
 }
 
-fileprivate func newtonHelper(x: Double, y: Double, precision: Double, iterationCount: Int) {
+fileprivate func newtonHelper(x: Double, y: Double, precision: Double, iterationCount: UInt64) {
     let multiplier = 1 / (-2 * x * x + 2 * x * cos(y + 2) + 2 * y * y)
     let nextX = x - multiplier * ((x * x + y * y - 1) * (cos(y + 2) - x) - 2 * y * (sin(y + 2) - y * x - 0.5))
     let nextY = y - multiplier * (y * (x * x + y * y - 1) + 2 * x * (sin(y + 2) - y * x - 0.5))
